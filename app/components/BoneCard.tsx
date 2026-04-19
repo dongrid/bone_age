@@ -10,7 +10,6 @@ interface Props {
   onSelect: (stageIndex: number) => void;
   scrollRef?: (el: HTMLDivElement | null) => void;
   onScroll?: () => void;
-  onScrollStart?: () => void;
   accent?: "blue" | "violet";
 }
 
@@ -75,7 +74,7 @@ function StageButton({ bone, stage, idx, active, onSelect, accent }: StageBtnPro
   );
 }
 
-export default function BoneCard({ bone, selectedStage, onSelect, scrollRef, onScroll, onScrollStart, accent = "blue" }: Props) {
+export default function BoneCard({ bone, selectedStage, onSelect, scrollRef, onScroll, accent = "blue" }: Props) {
   const isSelected = selectedStage !== undefined;
   const borderActive = accent === "violet"
     ? "border-violet-500 dark:border-violet-400"
@@ -96,7 +95,7 @@ export default function BoneCard({ bone, selectedStage, onSelect, scrollRef, onS
         </span>
       </div>
 
-      <div ref={scrollRef} onScroll={onScroll} onPointerDown={onScrollStart} className="flex gap-px overflow-x-auto">
+      <div ref={scrollRef} onScroll={onScroll} className="flex gap-px overflow-x-auto">
         {bone.stages.map((stage: Stage, idx: number) => (
           <StageButton
             key={stage}

@@ -30,20 +30,7 @@ export default function Page() {
 
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isSyncing = useRef(false);
-  const touchedCard = useRef<number | null>(null);
-
-  useEffect(() => {
-    function onPointerUp() {
-      touchedCard.current = null;
-    }
-    window.addEventListener("pointerup", onPointerUp);
-    window.addEventListener("pointercancel", onPointerUp);
-    return () => {
-      window.removeEventListener("pointerup", onPointerUp);
-      window.removeEventListener("pointercancel", onPointerUp);
-    };
-  }, []);
+  const programmaticallyScrolled = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     const visible = new Set<number>();
@@ -65,19 +52,20 @@ export default function Page() {
   }, []);
 
   function handleBoneScroll(index: number) {
-    if (touchedCard.current !== null && touchedCard.current !== index) return;
-    if (isSyncing.current) return;
+    if (programmaticallyScrolled.current.has(index)) {
+      programmaticallyScrolled.current.delete(index);
+      return;
+    }
     const source = scrollRefs.current[index];
     if (!source) return;
     const maxScroll = source.scrollWidth - source.clientWidth;
     if (maxScroll <= 0) return;
     const pct = source.scrollLeft / maxScroll;
-    isSyncing.current = true;
     scrollRefs.current.forEach((ref, i) => {
       if (i === index || !ref) return;
+      programmaticallyScrolled.current.add(i);
       ref.scrollLeft = pct * (ref.scrollWidth - ref.clientWidth);
     });
-    requestAnimationFrame(() => { isSyncing.current = false; });
   }
 
   const scores = useMemo(() => calcScores(sex, selections), [sex, selections]);
@@ -161,7 +149,6 @@ export default function Page() {
                     onSelect={(idx) => handleSelect(bone.key, idx)}
                     scrollRef={(el) => { scrollRefs.current[i] = el; }}
                     onScroll={() => handleBoneScroll(i)}
-                    onScrollStart={() => { touchedCard.current = i; }}
                   />
                 </div>
               ))}
@@ -182,7 +169,6 @@ export default function Page() {
                     onSelect={(idx) => handleSelect(bone.key, idx)}
                     scrollRef={(el) => { scrollRefs.current[RUS_BONES.length + i] = el; }}
                     onScroll={() => handleBoneScroll(RUS_BONES.length + i)}
-                    onScrollStart={() => { touchedCard.current = RUS_BONES.length + i; }}
                     accent="violet"
                   />
                 </div>
