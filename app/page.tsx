@@ -31,6 +31,19 @@ export default function Page() {
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isSyncing = useRef(false);
+  const touchedCard = useRef<number | null>(null);
+
+  useEffect(() => {
+    function onPointerUp() {
+      touchedCard.current = null;
+    }
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    return () => {
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+    };
+  }, []);
 
   useEffect(() => {
     const visible = new Set<number>();
@@ -52,6 +65,7 @@ export default function Page() {
   }, []);
 
   function handleBoneScroll(index: number) {
+    if (touchedCard.current !== null && touchedCard.current !== index) return;
     if (isSyncing.current) return;
     const source = scrollRefs.current[index];
     if (!source) return;
@@ -147,6 +161,7 @@ export default function Page() {
                     onSelect={(idx) => handleSelect(bone.key, idx)}
                     scrollRef={(el) => { scrollRefs.current[i] = el; }}
                     onScroll={() => handleBoneScroll(i)}
+                    onScrollStart={() => { touchedCard.current = i; }}
                   />
                 </div>
               ))}
@@ -167,6 +182,7 @@ export default function Page() {
                     onSelect={(idx) => handleSelect(bone.key, idx)}
                     scrollRef={(el) => { scrollRefs.current[RUS_BONES.length + i] = el; }}
                     onScroll={() => handleBoneScroll(RUS_BONES.length + i)}
+                    onScrollStart={() => { touchedCard.current = RUS_BONES.length + i; }}
                     accent="violet"
                   />
                 </div>
