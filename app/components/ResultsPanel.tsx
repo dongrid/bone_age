@@ -33,7 +33,7 @@ export default function ResultsPanel({ scores, ages, selections, activeBoneIndic
               <div className={`w-full h-1.5 rounded-sm transition-transform duration-150 ${
                 activeBoneIndices.has(i) ? "scale-y-[2]" : ""
               } ${
-                stageIdx !== undefined ? "bg-blue-500 dark:bg-blue-400" : "bg-gray-200 dark:bg-gray-700"
+                stageIdx !== undefined ? "bg-blue-500 dark:bg-blue-400" : "bg-blue-200 dark:bg-blue-900"
               }`} />
               <span className={`text-[16px] leading-none mt-2 font-bold tabular-nums ${stageName ? "text-blue-500 dark:text-blue-400" : "text-transparent"}`}>
                 {stageName ?? "."}
@@ -49,7 +49,7 @@ export default function ResultsPanel({ scores, ages, selections, activeBoneIndic
               <div className={`w-full h-1.5 rounded-sm transition-transform duration-150 ${
                 activeBoneIndices.has(i + RUS_BONE_KEYS.length) ? "scale-y-[2]" : ""
               } ${
-                stageIdx !== undefined ? "bg-violet-500 dark:bg-violet-400" : "bg-gray-200 dark:bg-gray-700"
+                stageIdx !== undefined ? "bg-violet-500 dark:bg-violet-400" : "bg-violet-200 dark:bg-violet-900"
               }`} />
               <span className={`text-[16px] leading-none mt-2 font-bold tabular-nums ${stageName ? "text-violet-500 dark:text-violet-400" : "text-transparent"}`}>
                 {stageName ?? "."}
