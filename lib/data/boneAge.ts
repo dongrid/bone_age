@@ -117,7 +117,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "PROX1",
     nameJa: "第1基節骨",
-    nameEn: "1st Proximal phalanx",
+    nameEn: "1st Proximal Phalanx",
     image: "/images/bones/prox1.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -134,7 +134,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "PROX3",
     nameJa: "第3基節骨",
-    nameEn: "3rd Proximal phalanx",
+    nameEn: "3rd Proximal Phalanx",
     image: "/images/bones/prox35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -151,7 +151,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "PROX5",
     nameJa: "第5基節骨",
-    nameEn: "5th Proximal phalanx",
+    nameEn: "5th Proximal Phalanx",
     image: "/images/bones/prox35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -168,7 +168,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "MID3",
     nameJa: "第3中節骨",
-    nameEn: "3rd Middle phalanx",
+    nameEn: "3rd Middle Phalanx",
     image: "/images/bones/mid35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -185,7 +185,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "MID5",
     nameJa: "第5中節骨",
-    nameEn: "5th Middle phalanx",
+    nameEn: "5th Middle Phalanx",
     image: "/images/bones/mid35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -202,7 +202,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "DIST1",
     nameJa: "第1末節骨",
-    nameEn: "1st Distal phalanx",
+    nameEn: "1st Distal Phalanx",
     image: "/images/bones/dis1.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -219,7 +219,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "DIST3",
     nameJa: "第3末節骨",
-    nameEn: "3rd Distal phalanx",
+    nameEn: "3rd Distal Phalanx",
     image: "/images/bones/dis35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
@@ -236,7 +236,7 @@ export const BONE_DEFINITIONS: BoneDefinition[] = [
   {
     key: "DIST5",
     nameJa: "第5末節骨",
-    nameEn: "5th Distal phalanx",
+    nameEn: "5th Distal Phalanx",
     image: "/images/bones/dis35.gif",
     stages: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
     criteria: {
