@@ -17,3 +17,8 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Reference materials
+*.xlsx
+*.jpeg
+*.jpg
